@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1DF8479-416A-4A1C-B0AE-D56541A6F2DA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MyDiagramEditor</RootNamespace>
+    <AssemblyName>MyDiagramEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Converters\Converters.cs" />
+    <Compile Include="IShell.cs" />
+    <Compile Include="Models\CanvasModel.cs" />
+    <Compile Include="Models\EditorModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Utilities\CanvasCreationMessage.cs" />
+    <Compile Include="Utilities\CanvasLoadingMessage.cs" />
+    <Compile Include="Utilities\ConnexionGenerator.cs" />
+    <Compile Include="Utilities\Lasso.cs" />
+    <Compile Include="Utilities\ShapeGenerator.cs" />
+    <Compile Include="Utilities\TextAlternationMessage.cs" />
+    <Compile Include="ViewModels\CanvasCreationViewModel.cs" />
+    <Compile Include="ViewModels\ClassViewModel.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
+    <Compile Include="ViewModels\MultiplicityViewModel.cs" />
+    <Compile Include="ViewModels\ProcessViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\CanvasCreationView.xaml.cs">
+      <DependentUpon>CanvasCreationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClassView.xaml.cs">
+      <DependentUpon>ClassView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditorView.xaml.cs">
+      <DependentUpon>EditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MultiplicityView.xaml.cs">
+      <DependentUpon>MultiplicityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcessView.xaml.cs">
+      <DependentUpon>ProcessView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\CanvasCreationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClassView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MultiplicityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProcessView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Resource Include="Resources\password.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Activity.png" />
+    <Resource Include="Resources\Aggregation.png" />
+    <Resource Include="Resources\Annotation.png" />
+    <Resource Include="Resources\Artefact.png" />
+    <Resource Include="Resources\BidirectionnalArrow.png" />
+    <Resource Include="Resources\Class.png" />
+    <Resource Include="Resources\Composition.png" />
+    <Resource Include="Resources\crayon 2.png" />
+    <Resource Include="Resources\crayon.png" />
+    <Resource Include="Resources\DirectionnalArrow.png" />
+    <Resource Include="Resources\DirectionnalLink.png" />
+    <Resource Include="Resources\dupliquer 2.png" />
+    <Resource Include="Resources\dupliquer 3.png" />
+    <Resource Include="Resources\dupliquer.png" />
+    <Resource Include="Resources\efface 2.png" />
+    <Resource Include="Resources\efface 3.png" />
+    <Resource Include="Resources\efface.png" />
+    <Resource Include="Resources\efface_crayon 2.png" />
+    <Resource Include="Resources\efface_crayon 3.png" />
+    <Resource Include="Resources\efface_crayon.png" />
+    <Resource Include="Resources\InheritanceLink.PNG" />
+    <Resource Include="Resources\lasso 2.png" />
+    <Resource Include="Resources\lasso 3.png" />
+    <Resource Include="Resources\lasso.png" />
+    <Resource Include="Resources\Line.png" />
+    <Resource Include="Resources\Phase.png" />
+    <Resource Include="Resources\position 2.png" />
+    <Resource Include="Resources\position 3.png" />
+    <Resource Include="Resources\position.png" />
+    <Resource Include="Resources\profile.png" />
+    <Resource Include="Resources\Role.png" />
+    <Resource Include="Resources\select-color.png" />
+    <Resource Include="Resources\Tutorial\Connexion\1.png" />
+    <Resource Include="Resources\Tutorial\Connexion\10.png" />
+    <Resource Include="Resources\Tutorial\Connexion\2.png" />
+    <Resource Include="Resources\Tutorial\Connexion\3.png" />
+    <Resource Include="Resources\Tutorial\Connexion\4.png" />
+    <Resource Include="Resources\Tutorial\Connexion\5.png" />
+    <Resource Include="Resources\Tutorial\Connexion\6.png" />
+    <Resource Include="Resources\Tutorial\Connexion\7.png" />
+    <Resource Include="Resources\Tutorial\Connexion\8.png" />
+    <Resource Include="Resources\Tutorial\Connexion\9.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\1a.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\1b.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\2.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\3a.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\3b.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\4a.png" />
+    <Resource Include="Resources\Tutorial\DiagramFormsStyle\4b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\10.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\11.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\12.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\1a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\1b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\1c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\1d.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\2a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\2b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\2c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\2d.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\2e.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\3a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\3b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\4a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\4b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\4c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\4d.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\4e.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\5a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\5b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\5c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\6a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\6b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\6c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\7a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\7b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\7c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\8a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\8b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\8c.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\9a.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\9b.png" />
+    <Resource Include="Resources\Tutorial\Manipulation\9c.png" />
+    <Resource Include="Resources\Tutorial\Overview\1.png" />
+    <Resource Include="Resources\Tutorial\Overview\10.png" />
+    <Resource Include="Resources\Tutorial\Overview\2.png" />
+    <Resource Include="Resources\Tutorial\Overview\3.png" />
+    <Resource Include="Resources\Tutorial\Overview\4.png" />
+    <Resource Include="Resources\Tutorial\Overview\4a.png" />
+    <Resource Include="Resources\Tutorial\Overview\5.png" />
+    <Resource Include="Resources\Tutorial\Overview\6.png" />
+    <Resource Include="Resources\Tutorial\Overview\6a.png" />
+    <Resource Include="Resources\Tutorial\Overview\9.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\1a.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\2b.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\3.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\4a.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\4b.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\5a.png" />
+    <Resource Include="Resources\Tutorial\ProcessConnexionStyle\5b.png" />
+    <Content Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\nugetexample.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

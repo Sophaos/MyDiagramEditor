@@ -1,0 +1,7 @@
+﻿
+namespace MyDiagramEditor
+{
+    interface IShell
+    {
+    }
+}
