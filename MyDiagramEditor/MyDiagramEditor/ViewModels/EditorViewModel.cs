@@ -1014,6 +1014,7 @@ namespace MyDiagramEditor.ViewModels
             ItemModel image = new ItemModel(imageWidth, imageHeight, byteImageData);
             _items.Add(image);
             Select(image);
+            SelectTool("deplacement");
         }
         
         // Every right click operation (adding shapes/class mostly)
@@ -1106,6 +1107,7 @@ namespace MyDiagramEditor.ViewModels
                 {
                     _lasso.SetRectangleSize(SelectedItems);
                     _selectedItems.Add(_lasso.RectangleSelection);
+                    SelectTool("deplacement");
                 }
             }
         }
@@ -1605,9 +1607,6 @@ namespace MyDiagramEditor.ViewModels
                     CanvasName = im.ElementAt(0).CanvasModel.Name;
                     CanvasWidth = im.ElementAt(0).CanvasModel.Width;
                     CanvasHeight = im.ElementAt(0).CanvasModel.Height;
-                    Protection = im.ElementAt(0).CanvasModel.Protection;
-                    Privacy = im.ElementAt(0).CanvasModel.Privacy;
-                    _canvas.Password = im.ElementAt(0).CanvasModel.Password; // techniquement ne devrais pas etre passer
                     _canvas.Creator = im.ElementAt(0).CanvasModel.Creator;
                     IsDoneAddingCanvas = true;
                     im.ElementAt(0).CanvasModel = null;
@@ -1660,8 +1659,7 @@ namespace MyDiagramEditor.ViewModels
             settings.Width = 400;
             settings.Title = "Create";
             settings.ResizeMode = ResizeMode.NoResize;
-            //TODO
-            _windowManager.ShowDialog(new CanvasCreationViewModel(_eventAggregator, "", ""), null, settings);
+            _windowManager.ShowDialog(new CanvasCreationViewModel(_eventAggregator), null, settings);
 
         }
 
@@ -1671,60 +1669,6 @@ namespace MyDiagramEditor.ViewModels
             get
             {
                 return !IsTutorialOn;
-            }
-        }
-
-        public void LoadMultiplicity(ItemModel item, string type)
-        {
-            if (item.IsConnexion && item.InitialItem.Type == "classe" && item.FinalItem.Type == "classe")
-            {
-                dynamic settings = new ExpandoObject();
-                settings.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-                settings.MinWidth = 150;
-                settings.Width = 150;
-                settings.Title = "Multiplicity";
-                settings.ResizeMode = ResizeMode.NoResize;
-                _windowManager.ShowDialog(new MultiplicityViewModel(_eventAggregator, item, type), null, settings);
-
-            }
-
-        }
-
-        public void LoadEditTextConexion(ItemModel item)
-        {
-            if (item.IsConnexion)
-            {
-                dynamic settings = new ExpandoObject();
-                settings.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-                settings.MinWidth = 200;
-                settings.Width = 200;
-                settings.Title = NameSetter(item.Type);
-                settings.ResizeMode = ResizeMode.NoResize;
-                _windowManager.ShowDialog(new ProcessViewModel(_eventAggregator, item), null, settings);
-            }
-        }
-
-        public void LoadEditTextForms(ItemModel item)
-        {
-            if (IsForm() && !item.IsConnexion)
-            {
-                dynamic settings = new ExpandoObject();
-                settings.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-                settings.MinWidth = 200;
-                settings.Width = 200;
-                settings.Title = NameSetter(item.Type);
-                settings.ResizeMode = ResizeMode.NoResize;
-                if (item.Type == "classe")
-                {
-                    _windowManager.ShowDialog(new ClassViewModel(_eventAggregator, item), null, settings);
-                }
-                else
-                {
-                    _windowManager.ShowDialog(new ProcessViewModel(_eventAggregator, item), null, settings);
-                }
             }
         }
 
@@ -1787,8 +1731,6 @@ namespace MyDiagramEditor.ViewModels
             NotifyOfPropertyChange(() => CanvasName);
             NotifyOfPropertyChange(() => CanvasWidth);
             NotifyOfPropertyChange(() => CanvasHeight);
-            NotifyOfPropertyChange(() => Protection);
-            NotifyOfPropertyChange(() => Privacy);
             MidCanvasX = Convert.ToInt32(CanvasWidth / 2);
             MidCanvasY = Convert.ToInt32(CanvasHeight / 2);
 
@@ -1894,30 +1836,8 @@ namespace MyDiagramEditor.ViewModels
             }
         }
 
-        public string Protection
-        {
-            get { return _canvas.Protection; }
-            set
-            {
-                if (_canvas.Protection != value)
-                {
-                    _canvas.Protection = value;
-                    NotifyOfPropertyChange(() => Protection);
-                }
-            }
-        }
-        public string Privacy
-        {
-            get { return _canvas.Privacy; }
-            set
-            {
-                if (_canvas.Privacy != value)
-                {
-                    _canvas.Privacy = value;
-                    NotifyOfPropertyChange(() => Privacy);
-                }
-            }
-        }
+
+
 
         public Point MousePosition
         {

@@ -51,7 +51,6 @@ namespace MyDiagramEditor.Utilities
             pg.Figures.Add(pathFigure);
             pg.AddGeometry(myLineGeometry12);
             pg.AddGeometry(myLineGeometry13);
-            MessageBox.Show(pg.ToString());
             return pg.ToString();
         }
         public string CreateActivite(int width = 100, int height = 60)
@@ -83,7 +82,6 @@ namespace MyDiagramEditor.Utilities
 
 
             pg.Figures.Add(pathFigure);
-            MessageBox.Show(pg.ToString());
             return pg.ToString();
         }
         public string CreateRole(int width = 40, int height = 60)

@@ -79,16 +79,5 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <!-- Bar en bas -->
-        <Grid Height="25" VerticalAlignment="Bottom" Background="#FF5C99D6" Panel.ZIndex="0">
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
-            </Grid.Effect>
-            <!-- Elements du chat -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="Gray">
-                <TextBlock Text="Status :" Margin="4" Foreground="White"/>
-                <TextBlock x:Name="Status" Margin="4" Foreground="{Binding Path=ForeGroundColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            </StackPanel>
-        </Grid>
     </Grid>
 </Window>

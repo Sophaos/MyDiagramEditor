@@ -456,6 +456,7 @@
                             <materialDesign:PackIcon Kind="HelpCircle" Height="30" Width="30" Margin="3 0 0 0"/>
                         </StackPanel>
                     </Button>
+                    <!--
                     <Expander Header="Testing">
                         <Canvas>
                             <StackPanel  Width="200" HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -476,6 +477,7 @@
                             </StackPanel>
                         </Canvas>
                     </Expander>
+                    -->
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -483,10 +485,6 @@
         <!-- La barre canvas -->
         <Border Margin="10 2 10 0" DockPanel.Dock="Top" Height="25" BorderThickness="0.75,0.75,0.75,0.75" BorderBrush="#77000000" Width="{Binding Path=CanvasWidth, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal" Background="#FFF0F0F0">
-                <materialDesign:PackIcon Kind="Eye" Height="18" Width="18" Cursor="Hand" Margin="5 0 0 0" VerticalAlignment="Center" ToolTip="Visibility"/>
-                <TextBlock x:Name="Privacy" Width="40" VerticalAlignment="Center" Margin="3 0 0 0"/>
-                <materialDesign:PackIcon Kind="LockReset" Height="18" Width="18" Cursor="Hand" Margin="5 0 0 0" VerticalAlignment="Center" ToolTip="Change Privacy"/>
-                <TextBlock x:Name="Protection" Width="80" VerticalAlignment="Center" Margin="3 0 0 0"/>
                 <TextBlock x:Name="CanvasName" VerticalAlignment="Center" Width="60" Margin="5 0 0 0" ToolTip="Canvas Name"></TextBlock>
                 <TextBlock x:Name="CanvasWidth" VerticalAlignment="Center" ToolTip="Canvas Width"></TextBlock>
                 <TextBlock VerticalAlignment="Center">x</TextBlock>
@@ -494,25 +492,7 @@
                 <TextBlock VerticalAlignment="Center" Width="25"> px</TextBlock>
                 <TextBlock x:Name="TextBlockPosition" Width="80" VerticalAlignment="Center"/>
                 <TextBlock Width="50"></TextBlock>
-
-                
-                <materialDesign:PackIcon Kind="CheckboxBlankCircle" Width="15" Height="15" Margin="0 0 0 0" VerticalAlignment="Center"
-                                         Foreground="{Binding Path=OnSelectionColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                <TextBlock x:Name="UserName" Margin="2 0 10 0" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
-
-                <materialDesign:PackIcon Kind="CheckboxBlankCircle" Width="15" Height="15" Margin="0 0 0 0" VerticalAlignment="Center"
-                                         Foreground="Red" />
-                <TextBlock x:Name="test1" Margin="2 0 10 0" VerticalAlignment="Center" FontWeight="Bold">Rhaegar Targaryen</TextBlock>
-
-                <materialDesign:PackIcon Kind="CheckboxBlankCircle" Width="15" Height="15" Margin="0 0 0 0" VerticalAlignment="Center"
-                                         Foreground="Blue" />
-                <TextBlock x:Name="test2" Margin="2 0 10 0" VerticalAlignment="Center" FontWeight="Bold">Lyanna Stark</TextBlock>
-
-                <materialDesign:PackIcon Kind="CheckboxBlankCircle" Width="15" Height="15" Margin="0 0 0 0" VerticalAlignment="Center"
-                                         Foreground="Magenta" />
-                <TextBlock x:Name="test3" Margin="2 0 10 0" VerticalAlignment="Center" FontWeight="Bold">Aegon Targaryen</TextBlock>
-                
-                </StackPanel>
+            </StackPanel>
         </Border>
         <!-- Le canvas de dessin-->
         <ScrollViewer DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -539,7 +519,7 @@
                    cal:Message.Attach=
                                    "[Event DragDelta] = [Action ChangeControlPoints($horizontalchange, $verticalchange, 'diagonal')]
                                    "/>
-                <Thumb Name="vertical" Background="White" 
+                <Thumb Name="vertical" Background="White"
                    Canvas.Top="{Binding Path=CanvasHeight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Canvas.Left="{Binding Path=MidCanvasX, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                       Width="6" Height="6"
@@ -554,6 +534,7 @@
                               Height="{Binding Path=CanvasHeight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                               Background="White" cal:Message.Attach=
                               "[Event MouseMove] = [Action MouseMoveCanvas($mousepoint)];
+                               [Event PreviewMouseDoubleClick] = [Action SelectTool('deplacement')];
                                [Event MouseLeave] = [Action MouseLeaveCanvas($mousepoint)];
                                [Event MouseRightButtonUp] = [Action RightClickOperation()];
                                [Event MouseLeftButtonDown] = [Action StartLasso()];
@@ -630,7 +611,6 @@
                                          Width="{Binding Path=TextWidth1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          Height="{Binding Path=Text1Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          Visibility="{Binding Path=Visibility1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                         IsReadOnly="True"
                                          IsEnabled="{Binding Path=IsTextEnabled, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          IsHitTestVisible="{Binding Path=IsTextHittable , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          TextAlignment="Center"
@@ -639,11 +619,8 @@
                                          Panel.ZIndex="4"
                                          Background="Transparent"
                                          BorderBrush="Transparent"
-                                        
                                          cal:Message.Attach=
-                                         "[Event PreviewMouseDown] = [Action Select($dataContext)];
-                                          [Event MouseDoubleClick] = [Action LoadEditTextForms($dataContext)];
-                                          [Event MouseDoubleClick] = [Action LoadEditTextConexion($dataContext)]
+                                         "[Event PreviewMouseDown] = [Action Select($dataContext)]
                                          "
                                          />
                                 <TextBox AcceptsReturn="True"
@@ -655,7 +632,6 @@
                                          Height="{Binding Path=Text2Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          Visibility="{Binding Path=Visibility2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          IsEnabled="{Binding Path=IsTextEnabled, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                         IsReadOnly="True"
                                          IsHitTestVisible="{Binding Path=IsTextHittable , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          TextAlignment="Left"
                                          VerticalAlignment="Center"
@@ -664,9 +640,7 @@
                                          Background="Transparent"
                                          BorderBrush="Transparent"
                                          cal:Message.Attach=
-                                         "[Event PreviewMouseDown] = [Action Select($dataContext)];
-                                         [Event MouseDoubleClick] = [Action LoadMultiplicity($dataContext, 'First')];
-                                         [Event MouseDoubleClick] = [Action LoadEditTextForms($dataContext)]
+                                         "[Event PreviewMouseDown] = [Action Select($dataContext)]
                                          "
                                          />
                                 <TextBox AcceptsReturn="True"
@@ -678,7 +652,6 @@
                                          Height="{Binding Path=Text3Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          Visibility="{Binding Path=Visibility3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          IsEnabled="{Binding Path=IsTextEnabled, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                         IsReadOnly="True"
                                          IsHitTestVisible="{Binding Path=IsTextHittable , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          TextAlignment="Left"
                                          VerticalAlignment="Center"
@@ -687,9 +660,7 @@
                                          Background="Transparent"
                                          BorderBrush="Transparent"
                                          cal:Message.Attach=
-                                         "[Event PreviewMouseDown] = [Action Select($dataContext)];
-                                         [Event MouseDoubleClick] = [Action LoadMultiplicity($dataContext, 'Second')];
-                                         [Event MouseDoubleClick] = [Action LoadEditTextForms($dataContext)]
+                                         "[Event PreviewMouseDown] = [Action Select($dataContext)]
                                          "
                                          />
                                 <Ellipse
@@ -789,8 +760,7 @@
                                        Canvas.Left="0"
                                        Canvas.Top="{Binding LeftConnectorTop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'left')];
-                                    [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'left')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -799,8 +769,7 @@
                                        Canvas.Left="0"
                                        Canvas.Top="0"
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'top-left')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'top-left')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -809,8 +778,7 @@
                                        Canvas.Left="{Binding TopConnectorLeft , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        Canvas.Top="0" 
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'top')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'top')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -819,8 +787,7 @@
                                        Canvas.Left="{Binding ItemWidth, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        Canvas.Top="0"
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'top-right')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'top-right')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -829,8 +796,7 @@
                                        Canvas.Left="{Binding ItemWidth , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        Canvas.Top="{Binding RightConnectorTop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'right')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'right')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -839,8 +805,7 @@
                                        Canvas.Left="{Binding ItemWidth , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        Canvas.Top="{Binding BottomConnectorTop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'bottom-right')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'bottom-right')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -849,8 +814,7 @@
                                        Canvas.Left="{Binding BottomConnectorLeft , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        Canvas.Top="{Binding BottomConnectorTop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                        cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'bottom')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'bottom')]
                                    "
                                 />
                                 <Thumb Background="Black"  Width="10" Height="10"
@@ -859,8 +823,7 @@
                                        Canvas.Left="0"
                                        Canvas.Top="{Binding BottomConnectorTop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                 cal:Message.Attach=
-                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'bottom-left')];
-                                       [Event DragCompleted] = [Action EndResize()]
+                                   "[Event DragDelta] = [Action Resize($horizontalchange, $verticalchange, 'bottom-left')]
                                    "
                                        />
                                 <Rectangle

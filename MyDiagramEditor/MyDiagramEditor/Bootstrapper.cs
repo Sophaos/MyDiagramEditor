@@ -4,16 +4,15 @@ using MyDiagramEditor.ViewModels;
 using System.Windows.Input;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Controls.Primitives;
 
 namespace MyDiagramEditor
 {
-    public class Bootstrapper : BootstrapperBase
+    public class AppBootstrapper : BootstrapperBase
     {
         private SimpleContainer _container = new SimpleContainer();
 
-        public Bootstrapper()
+        public AppBootstrapper()
         {
             Initialize();
         }

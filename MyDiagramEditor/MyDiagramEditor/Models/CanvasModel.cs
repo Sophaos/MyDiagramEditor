@@ -13,9 +13,6 @@ namespace MyDiagramEditor.Models
         private double _width = 0;
         private double _height = 0;
         private string _name = "";
-        private string _protection = "";
-        private string _privacy = "";
-        private string _password = "";
 
         public CanvasModel() { }
 
@@ -64,42 +61,6 @@ namespace MyDiagramEditor.Models
                 {
                     _name = value;
                     NotifyOfPropertyChange(() => Name);
-                }
-            }
-        }
-        public string Protection
-        {
-            get { return _protection; }
-            set
-            {
-                if (_protection != value)
-                {
-                    _protection = value;
-                    NotifyOfPropertyChange(() => Protection);
-                }
-            }
-        }
-        public string Privacy
-        {
-            get { return _privacy; }
-            set
-            {
-                if (_privacy != value)
-                {
-                    _privacy = value;
-                    NotifyOfPropertyChange(() => Privacy);
-                }
-            }
-        }
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                if (_password != value)
-                {
-                    _password = value;
-                    NotifyOfPropertyChange(() => Password);
                 }
             }
         }

@@ -5,44 +5,26 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:cal="http://www.caliburnproject.org"
             mc:Ignorable="d"
-            d:DesignHeight="280" d:DesignWidth="500" Background="White">
+            d:DesignHeight="200" d:DesignWidth="500" Background="White">
     <StackPanel Orientation="Vertical">
         <TextBlock FontSize="30" FontWeight="Bold" HorizontalAlignment="Center">Canvas</TextBlock>
         <StackPanel Orientation="Horizontal" Margin="60 30 60 0">
             <TextBlock> Name :</TextBlock>
-            <TextBox x:Name="CanvasName" Width="200" Margin="100 0 0 0"></TextBox>
+            <TextBox x:Name="CanvasName" Width="200" Margin="50 0 0 0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="60 0 60 0">
             <TextBlock><Run Text="Width :"/></TextBlock>
-            <TextBox x:Name="CanvasWidth" Width="200" Margin="100 0 0 0"/>
+            <TextBox x:Name="CanvasWidth" Width="200" Margin="50 0 0 0"/>
             <TextBlock Margin="5 0 0 0">px</TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="60 0 60 0">
             <TextBlock><Run Text="Height :"/></TextBlock>
-            <TextBox  x:Name="CanvasHeight" Width="200" Margin="96 0 0 0"/>
+            <TextBox  x:Name="CanvasHeight" Width="200" Margin="46 0 0 0"/>
             <TextBlock Margin="5 0 0 0">px</TextBlock>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="60 0 60 0">
-            <TextBlock>Privacy :</TextBlock>
-            <ComboBox Width="200" Margin="95 0 0 0">
-                <ComboBoxItem IsSelected="True" cal:Message.Attach="[Event Selected] = [Action SelectPrivacy('Public')]">Public</ComboBoxItem>
-                <ComboBoxItem cal:Message.Attach="[Event Selected] = [Action SelectPrivacy('Private')]">Private</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="60 0 60 0">
-            <TextBlock>Protection :</TextBlock>
-            <ComboBox Width="200" Margin="78 0 0 0">
-                <ComboBoxItem IsSelected="True" cal:Message.Attach="[Event Selected] = [Action SelectProtection('Unprotected')]">Unprotected</ComboBoxItem>
-                <ComboBoxItem cal:Message.Attach="[Event Selected] = [Action SelectProtection('Protected')]">Protected</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="60 5 60 0">
-            <TextBlock>Password :</TextBlock>
-            <TextBox x:Name="Password" Width="200" Margin="84 0 0 0" IsEnabled="{Binding Path=IsProtected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
-        </StackPanel>
         <StackPanel Orientation="Vertical">
-            <Button x:Name="Create" Margin="50 20 0 10" Width="200">Create</Button>
-            <Button x:Name="Load" Margin="50 0 0 10" Width="200">Load an existing Canvas</Button>
+            <Button x:Name="Create" Margin="0 10 0 5" Width="200" Content="Create"/>
+            <Button x:Name="Load" Margin="0 0 0 5" Width="200" Content="Load an existing Canvas"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

@@ -102,25 +102,13 @@
     <Compile Include="Utilities\ShapeGenerator.cs" />
     <Compile Include="Utilities\TextAlternationMessage.cs" />
     <Compile Include="ViewModels\CanvasCreationViewModel.cs" />
-    <Compile Include="ViewModels\ClassViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />
-    <Compile Include="ViewModels\MultiplicityViewModel.cs" />
-    <Compile Include="ViewModels\ProcessViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\CanvasCreationView.xaml.cs">
       <DependentUpon>CanvasCreationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ClassView.xaml.cs">
-      <DependentUpon>ClassView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\EditorView.xaml.cs">
       <DependentUpon>EditorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MultiplicityView.xaml.cs">
-      <DependentUpon>MultiplicityView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProcessView.xaml.cs">
-      <DependentUpon>ProcessView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -141,19 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClassView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\EditorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MultiplicityView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ProcessView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

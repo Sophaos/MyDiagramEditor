@@ -94,7 +94,6 @@ namespace MyDiagramEditor.Utilities
             pg2.Transform = transform;
             pg.AddGeometry(pg2);
 
-            // a updater
             string finalGeometry = pg.ToString();
 
             finalGeometry = finalGeometry.Remove(finalGeometry.IndexOf("L") + 1, finalGeometry.IndexOf(" ") - finalGeometry.IndexOf("L") - 1);

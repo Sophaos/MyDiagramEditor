@@ -16,24 +16,12 @@ namespace MyDiagramEditor.ViewModels
         private string _canvasName = "Westeros";
         private double _canvasHeight = 1000;
         private double _canvasWidth = 1000;
-        private string _password = "Aegon";
-        private string _privacy = "Public";
-        private string _protection = "Unprotected";
-        private bool _isProtected = false;
-        private string _username = "";
-        private string _thumbnail = "";
+
 
         public CanvasCreationViewModel() { }
-        public CanvasCreationViewModel(IEventAggregator eventAggregator, string username, string thumbnail)
+        public CanvasCreationViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            _username = username;
-            _thumbnail = thumbnail;
-        }
-
-        public bool isPrivate()
-        {
-            return _privacy == "private";
         }
 
         public void Create()
@@ -53,9 +41,6 @@ namespace MyDiagramEditor.ViewModels
             canvas.Height = _canvasHeight;
             canvas.Width = _canvasWidth;
             canvas.Name = _canvasName;
-            canvas.Privacy = _privacy;
-            canvas.Protection = _protection;
-            canvas.Password = _password;
             ccm.Canvas = canvas;
             ccm.IsDoneAdding = true;
             _eventAggregator.PublishOnCurrentThread(ccm);
@@ -68,33 +53,6 @@ namespace MyDiagramEditor.ViewModels
             TryClose();
         }
 
-        public void SelectProtection(string type)
-        {
-            if (type == "Unprotected")
-            {
-
-                Protection = "Unprotected";
-                IsProtected = false;
-            }
-            else if (type == "Protected")
-            {
-
-                Protection = "Protected";
-                IsProtected = true;
-            }
-        }
-
-        public void SelectPrivacy(string type)
-        {
-            if (type == "Public")
-            {
-                Privacy = "Public";
-            }
-            else if (type == "Private")
-            {
-                Privacy = "Private";
-            }
-        }
 
         public string CanvasName
         {
@@ -121,43 +79,6 @@ namespace MyDiagramEditor.ViewModels
             {
                 _canvasHeight = value;
                 NotifyOfPropertyChange(() => CanvasHeight);
-            }
-        }
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                NotifyOfPropertyChange(() => Password);
-            }
-        }
-        public string Protection
-        {
-            get { return _protection; }
-            set
-            {
-                _protection = value;
-                NotifyOfPropertyChange(() => Protection);
-            }
-        }
-
-        public string Privacy
-        {
-            get { return _privacy; }
-            set
-            {
-                _privacy = value;
-                NotifyOfPropertyChange(() => Privacy);
-            }
-        }
-        public bool IsProtected
-        {
-            get { return _isProtected; }
-            set
-            {
-                _isProtected = value;
-                NotifyOfPropertyChange(() => IsProtected);
             }
         }
     }
