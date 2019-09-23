@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -13,13 +12,13 @@ using Caliburn.Micro;
 using Microsoft.Win32;
 using MyDiagramEditor.Models;
 using MyDiagramEditor.Utilities;
-//using static PolyPaint.Models.ItemModel;
 namespace MyDiagramEditor.ViewModels
 {
+    // le tutoriel sera ajoute eventuellement
     public class EditorViewModel : PropertyChangedBase,
-        //IHandle<TextMessage>, IHandle<TutorialMessage>, 
+        //IHandle<TutorialMessage>, 
         IHandle<CanvasCreationMessage>,
-        IHandle<CanvasLoadingMessage>//, IHandle<TextAlternationMessage>
+        IHandle<CanvasLoadingMessage>
     {
         #region attributs
         private ObservableCollection<ItemModel> _items = new ObservableCollection<ItemModel>();         // items to be shown in the canvas
@@ -386,7 +385,7 @@ namespace MyDiagramEditor.ViewModels
         private bool _isMouseDown = false;          // a deplacer
         private IEventAggregator _eventAggregator;  // a deplacer
 
-        // Begin the drag/moe operation
+        // Begin the drag/move operation
         public void StartMove(ItemModel item)
         {
             if (item.IsConnexion) return;
@@ -804,7 +803,6 @@ namespace MyDiagramEditor.ViewModels
             if (SelectedItems.Count != 0 && isThereDiagram)   // if there are selected items: copy and paste them
             {
                 
-                #region nouvelle version
                 CopiedItems.Clear();
                 foreach (ItemModel s in SelectedItems)
                 {
@@ -833,9 +831,6 @@ namespace MyDiagramEditor.ViewModels
                         pastedItem.User = User;
                     }
                 }
-
-                #endregion
-
             }
             else if (CopiedItems.Count != 0 && SelectedItems.Count == 0) // if there are no selected items: paste the last copied items
             {
@@ -903,7 +898,7 @@ namespace MyDiagramEditor.ViewModels
         // Select a single item or a collection of connexion (left click) (to be fixed overall)
         public void Select(ItemModel item)
         {
-            #region version desiree
+
             if (item.User == "" || item.User == User)
             {
                 if (item == _lasso.RectangleSelection) return;
@@ -950,9 +945,6 @@ namespace MyDiagramEditor.ViewModels
 
                 }
             }
-
-
-            #endregion
         }
 
         // Clear the current selection (to be updated)
@@ -1692,36 +1684,7 @@ namespace MyDiagramEditor.ViewModels
         }
         #endregion
 
-        #region test methods
-        public void getItemsCount() => MessageBox.Show(Items.Count().ToString());
-        public void getCopiedItemsCount() { MessageBox.Show(CopiedItems.Count().ToString()); }
-        public void getSelectedItemsCount() { MessageBox.Show(SelectedItems.Count().ToString()); }
-        public void getStackItemsCount() { MessageBox.Show(Stack.Count().ToString()); }
-        public void getConnexionLinksCount()
-        {
-            int count = 0;
-            foreach (ItemModel i in _items)
-            {
-                if (i.IsConnexion)
-                {
-                    count++;
-                }
-            }
-            MessageBox.Show(count.ToString());
-        }
-
-
-        /*
-        public void Handle(TutorialMessage message)
-        {
-            if (message.Message == "closing tutorial")
-            {
-                IsTutorialOn = false;
-                NotifyOfPropertyChange(() => CanLoadTutorial);
-            }
-        }
-        */
-
+        #region Handling
         public void Handle(CanvasCreationMessage message)
         {
             IsDoneAddingCanvas = message.IsDoneAdding;
@@ -1744,8 +1707,18 @@ namespace MyDiagramEditor.ViewModels
             }
         }
 
-
+        /*
+        public void Handle(TutorialMessage message)
+        {
+            if (message.Message == "closing tutorial")
+            {
+                IsTutorialOn = false;
+                NotifyOfPropertyChange(() => CanLoadTutorial);
+            }
+        }
+        */
         #endregion
+
 
         #region getters / setters
         public int MidCanvasX
@@ -1835,9 +1808,6 @@ namespace MyDiagramEditor.ViewModels
                 }
             }
         }
-
-
-
 
         public Point MousePosition
         {
@@ -1955,9 +1925,6 @@ namespace MyDiagramEditor.ViewModels
                 MidCanvasY = Convert.ToInt32(CanvasHeight / 2);
             }
         }
-
-
-
         public bool IsDoneAddingCanvas { get => _isDoneAddingCanvas; set => _isDoneAddingCanvas = value; }
         #endregion
     }
