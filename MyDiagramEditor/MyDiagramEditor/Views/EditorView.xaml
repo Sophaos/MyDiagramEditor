@@ -31,8 +31,8 @@
             </MenuItem>
         </Menu>
         <!-- La barre a outil -->
-        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,0.5" BorderBrush="#77000000">
-            <StackPanel Orientation="Horizontal" Height="135">
+        <Border DockPanel.Dock="Left" BorderThickness="0,0,0,0.5" BorderBrush="#77000000" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical">
                 <StackPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.01">
                         <GradientStop Color="Gray"/>
@@ -46,12 +46,12 @@
                         BorderBrush="Black"
                         CornerRadius="10" Margin="0,2,0,2"
                          >
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                         <TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Manipulation</TextBlock>
 
-                        <StackPanel Orientation="Horizontal" Margin="3 10 3 3">
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="5">
+                        <StackPanel Orientation="Vertical" Margin="3 10 3 3">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
 
                                 <Button x:Name="Push" Width="25" Height="25"  Background="#00000000"  Content="≚" FontSize="17" ToolTip="Push"/>
                                 <Button x:Name="Pop" Width="25" Height="25" Background="#00000000"  Content="≙" FontSize="17" ToolTip="Pop"/>
@@ -61,7 +61,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
                                 <Button x:Name="lasso" Width="40" Height="40" ToolTip="Lasso"
                             BorderBrush="{Binding SelectedTool, ConverterParameter=lasso, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                             Background="{Binding SelectedTool, ConverterParameter=lasso, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
@@ -79,7 +79,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
                                 <Button Width="40" Height="40" ToolTip="Floating Text"
                         BorderBrush="{Binding SelectedTool, ConverterParameter=texte, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding SelectedTool, ConverterParameter=texte, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
@@ -98,7 +98,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
                                 <Button x:Name="ClearSelection" Width="40" Height="40" ToolTip="Clear Selection"
                             HorizontalContentAlignment="Left"
                             Background="Transparent"                                
@@ -117,7 +117,7 @@
                                 </Button>
 
                             </StackPanel>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
                                 <Button x:Name="RotateRight" Width="40" Height="40" ToolTip="Rotate Right (90°)"
                             HorizontalContentAlignment="Left"
                             Background="Transparent"                                
@@ -135,7 +135,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
                                 <Button x:Name="Duplicate" Width="40" Height="40" ToolTip="Duplicate/Paste"
                             HorizontalContentAlignment="Left"
                             Background="Transparent"                                
@@ -165,7 +165,7 @@
                         Margin="2">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Margin="0 3 0 0" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Diagram Forms</TextBlock>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
                             <!-- Process -->
                             <Border
                                 
@@ -175,7 +175,7 @@
                                 Margin="4">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold">Process</TextBlock>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical">
                                         <Button Width="50" Height="60" Margin="5 0 5 5" ToolTip="Work Product"
                                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
@@ -319,7 +319,7 @@
                                 Margin="5 5 10 5">
                                 <StackPanel>
                                     <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold"> UML Class</TextBlock>
-                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                    <StackPanel Orientation="Vertical" Margin="5">
                                         <Button Width="100" Height="60" ToolTip="Class"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=classe, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=classe, UpdateSourceTrigger=PropertyChanged}" 
@@ -329,9 +329,11 @@
                                                 <Image Source="/Resources/Class.png"  />
                                             </StackPanel>
                                         </Button>
-                                        <StackPanel Orientation="Horizontal">
+                                        <!--
+                                        <StackPanel Orientation="Vertical">
                                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"  Width="1"/>
                                         </StackPanel>
+                                        -->
                                         <!-- connexions -->
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="3">
                                             <ComboBox Width="100" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Class Connexions">
@@ -361,10 +363,10 @@
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Height="80">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
 
-                                <StackPanel Orientation="Vertical" Height="80" VerticalAlignment="Center">
-                                    <Button x:Name="ColorBorderShape" Margin="0 10 0 0" ToolTip="Border Color"
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button x:Name="ColorBorderShape" Margin="0 0 0 0" ToolTip="Border Color"
                                         HorizontalContentAlignment="Left"
                                         Background="Transparent"                                
                                         >
@@ -387,7 +389,7 @@
                                 </StackPanel>
                             </StackPanel>
 
-                            <StackPanel VerticalAlignment="Center" Margin="2">
+                            <StackPanel Margin="2" Orientation="Horizontal">
                                 <Button x:Name="Line" Width="24" Height="24" ToolTip="Lined Border"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"
@@ -440,45 +442,10 @@
                                   RecentColorsHeader="Recently used"
                                   UsingAlphaChannel="True"
                                   AdvancedButtonHeader="Custom" />
-                            
-                        </StackPanel>
 
+                        </StackPanel>
                     </StackPanel>
                 </Border>
-                <StackPanel Orientation="Vertical" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button x:Name="Tutorial" Width="40" Height="40" Margin="0" ToolTip="Tutorial"
-                            HorizontalContentAlignment="Left"                            
-                            BorderBrush="Transparent"
-                            Background="Transparent" 
-                            cal:Message.Attach="[Event Click] = [Action LoadTutorial()]"
-                            >
-                        <StackPanel>
-                            <materialDesign:PackIcon Kind="HelpCircle" Height="30" Width="30" Margin="3 0 0 0"/>
-                        </StackPanel>
-                    </Button>
-                    <!--
-                    <Expander Header="Testing">
-                        <Canvas>
-                            <StackPanel  Width="200" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                <StackPanel.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.01">
-                                        <GradientStop Color="#FFE0E0E0"/>
-                                        <GradientStop Color="White" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </StackPanel.Background>
-                                <Button x:Name="getItemsCount">Items count</Button>
-                                <Button x:Name="getCopiedItemsCount">Copied items count</Button>
-                                <Button x:Name="getSelectedItemsCount">Selected items count</Button>
-                                <Button x:Name="getStackItemsCount">Stack items count</Button>
-                                <Button x:Name="getConnexionLinksCount">Connexions links count</Button>
-                                <Button x:Name="Test">Test</Button>
-                                <Button x:Name="Connecting">Connecting</Button>
-                                <TextBox x:Name="User"></TextBox>
-                            </StackPanel>
-                        </Canvas>
-                    </Expander>
-                    -->
-                </StackPanel>
             </StackPanel>
         </Border>
 
