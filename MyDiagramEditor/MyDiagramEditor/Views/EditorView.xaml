@@ -176,53 +176,59 @@
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold">Process</TextBlock>
                                     <StackPanel Orientation="Vertical">
-                                        <Button Width="50" Height="60" Margin="5 0 5 5" ToolTip="Work Product"
+                                        <StackPanel Orientation="Horizontal">
+                                            <!--- -->
+                                            <Button Width="50" Height="60" Margin="5 0 5 5" ToolTip="Work Product"
                                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         cal:Message.Attach=
                                         "[Event Click] = [Action SelectTool('artefact')]">
-                                            <StackPanel>
-                                                <Image Source="/Resources/Artefact.PNG"  />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Width="50" Height="60" Margin="5" ToolTip="Activity"
-                        BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
-                        Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
-                        cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('activite')]">
-                                            <StackPanel>
-                                                <Image Source="/Resources/Activity.PNG"  />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Width="50" Height="60" Margin="5" ToolTip="Role"
-                        BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
-                        Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
-                        cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('role')]">
-                                            <StackPanel>
-                                                <Image Source="/Resources/Role.png" Height="50" Width="50"  />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Width="100" Height="60" ToolTip="Annotation"
-                        BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
-                        Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
-                        cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('commentaire')]">
-                                            <StackPanel>
-                                                <Image Source="/Resources/Annotation.png"  />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Width="100" Height="60" ToolTip="Phase"
+                                                <StackPanel>
+                                                    <Image Source="/Resources/Artefact.PNG"  />
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Width="100" Height="60" ToolTip="Phase"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=phase, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=phase, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
                         "[Event Click] = [Action SelectTool('phase')]">
-                                            <StackPanel>
-                                                <Image Source="/Resources/Phase.png"  />
-                                            </StackPanel>
-                                        </Button>
+                                                <StackPanel>
+                                                    <Image Source="/Resources/Phase.png"  />
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+
                                         <StackPanel Orientation="Horizontal">
-                                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"  Width="1"/>
+                                            <Button Width="50" Height="60" Margin="5" ToolTip="Role"
+                        BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
+                        Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
+                        cal:Message.Attach=
+                        "[Event Click] = [Action SelectTool('role')]">
+                                                <StackPanel>
+                                                    <Image Source="/Resources/Role.png" Height="50" Width="50"  />
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Width="100" Height="60" ToolTip="Annotation"
+                        BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
+                        Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
+                        cal:Message.Attach=
+                        "[Event Click] = [Action SelectTool('commentaire')]">
+                                                <StackPanel>
+                                                    <Image Source="/Resources/Annotation.png"  />
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Width="50" Height="40" Margin="5" ToolTip="Activity"
+                        BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
+                        Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
+                        cal:Message.Attach=
+                        "[Event Click] = [Action SelectTool('activite')]">
+                                                <StackPanel>
+                                                    <Image Source="/Resources/Activity.PNG"  />
+                                                </StackPanel>
+                                            </Button>
                                         </StackPanel>
                                         <!-- connexions -->
                                         <StackPanel Orientation="Vertical">
@@ -240,7 +246,7 @@
                                                     <Image Source="/Resources/BidirectionnalArrow.png"  />
                                                 </ComboBoxItem>
                                             </ComboBox>
-                                            <StackPanel Orientation="Horizontal" Margin="6 1 5 1">
+                                            <StackPanel Orientation="Horizontal" Margin="6 1 5 1" HorizontalAlignment="Center">
                                                 <Button Width="24" Height="24"  ToolTip="Linear Connexion"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"
@@ -281,7 +287,7 @@
                                                     </StackPanel>
                                                 </Button>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal" Margin="5 1 5 1">
+                                            <StackPanel Orientation="Horizontal" Margin="5 1 5 1" HorizontalAlignment="Center">
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                                     <TextBox x:Name="ConnexionThickness" Width="49" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" ToolTip="Connexion Size"/>
                                                 </StackPanel>
@@ -389,7 +395,7 @@
                                 </StackPanel>
                             </StackPanel>
 
-                            <StackPanel Margin="2" Orientation="Horizontal">
+                            <StackPanel Margin="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Button x:Name="Line" Width="24" Height="24" ToolTip="Lined Border"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"
