@@ -407,7 +407,6 @@ namespace MyDiagramEditor.ViewModels
                     s.Left = MousePosition.X - s.ItemCenterX;
                     s.Top = MousePosition.Y - s.ItemCenterY;
 
-                    //sendMovement(s.Id, s.Left, s.Top);  // provenance du server
                 }
             }
 

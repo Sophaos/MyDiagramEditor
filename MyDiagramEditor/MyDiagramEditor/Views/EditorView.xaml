@@ -31,7 +31,9 @@
             </MenuItem>
         </Menu>
         <!-- La barre a outil -->
-        <Border DockPanel.Dock="Left" BorderThickness="0,0,0,0.5" BorderBrush="#77000000" VerticalAlignment="Top">
+        <ScrollViewer DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Top"
+            
+            VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <StackPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.01">
@@ -41,28 +43,24 @@
                     </LinearGradientBrush>
                 </StackPanel.Background>
 
-                <Border
-                        BorderThickness="2"
-                        BorderBrush="Black"
-                        CornerRadius="10" Margin="0,2,0,2"
-                         >
+                <Border>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                        <TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Manipulation</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold">Manipulation</TextBlock>
 
                         <StackPanel Orientation="Vertical" Margin="3 10 3 3">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
 
-                                <Button x:Name="Push" Width="25" Height="25"  Background="#00000000"  Content="≚" FontSize="17" ToolTip="Push"/>
-                                <Button x:Name="Pop" Width="25" Height="25" Background="#00000000"  Content="≙" FontSize="17" ToolTip="Pop"/>
-                                <Button x:Name="Clean" Width="25" Height="25"  Background="#00000000"   FontSize="17" ToolTip="Clear">
+                                <Button x:Name="Push" Width="20" Height="20"  Background="#00000000"  Content="≚" FontSize="17" ToolTip="Push"/>
+                                <Button x:Name="Pop" Width="20" Height="20" Background="#00000000"  Content="≙" FontSize="17" ToolTip="Pop"/>
+                                <Button x:Name="Clean" Width="20" Height="20"  Background="#00000000"   FontSize="17" ToolTip="Clear">
                                     <StackPanel>
-                                        <materialDesign:PackIcon Kind="Trashcan" Height="20" Width="20"/>
+                                        <materialDesign:PackIcon Kind="Trashcan" Height="15" Width="15"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="lasso" Width="40" Height="40" ToolTip="Lasso"
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="lasso" Width="30" Height="30" ToolTip="Lasso"
                             BorderBrush="{Binding SelectedTool, ConverterParameter=lasso, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                             Background="{Binding SelectedTool, ConverterParameter=lasso, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
                             cal:Message.Attach="[Event Click] = [Action SelectTool('lasso')]">
@@ -70,7 +68,7 @@
                                         <Image Source="/Resources/lasso.png"  />
                                     </StackPanel>
                                 </Button>
-                                <Button Width="40" Height="40" ToolTip="Move"
+                                <Button Width="30" Height="30" ToolTip="Move"
                         BorderBrush="{Binding SelectedTool, ConverterParameter=deplacement, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding SelectedTool, ConverterParameter=deplacement, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach="[Event Click] = [Action SelectTool('deplacement')]">
@@ -79,8 +77,8 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Width="40" Height="40" ToolTip="Floating Text"
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Width="30" Height="30" ToolTip="Floating Text"
                         BorderBrush="{Binding SelectedTool, ConverterParameter=texte, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding SelectedTool, ConverterParameter=texte, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach="[Event Click] = [Action SelectTool('texte')]">
@@ -88,13 +86,13 @@
                                         <materialDesign:PackIcon Kind="FormatText" Height="25" Width="25"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Width="40" Height="40" ToolTip="Resize"
+                                <Button Width="30" Height="30" ToolTip="Resize"
                             HorizontalContentAlignment="Left"                            
                             BorderBrush="{Binding SelectedTool, ConverterParameter=resize, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                             Background="{Binding SelectedTool, ConverterParameter=resize, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}"                              
                             cal:Message.Attach="[Event Click] = [Action SelectTool('resize')]">
                                     <StackPanel>
-                                        <materialDesign:PackIcon Kind="Resize" Height="30" Width="30"/>
+                                        <materialDesign:PackIcon Kind="Resize" Height="25" Width="25"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
@@ -104,7 +102,7 @@
                             Background="Transparent"                                
                             >
                                     <StackPanel>
-                                        <materialDesign:PackIcon Kind="SelectionOff" Height="30" Width="30" Margin="4"/>
+                                        <materialDesign:PackIcon Kind="SelectionOff" Height="25" Width="25" Margin="4"/>
                                     </StackPanel>
                                 </Button>
                                 <Button Width="40" Height="40" ToolTip="Insert Image"
@@ -159,68 +157,60 @@
                     </StackPanel>
                 </Border>
                 <Border
-                        BorderThickness="2"
-                        BorderBrush="Black"
-                        CornerRadius="10"
-                        Margin="2">
+                        >
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="0 3 0 0" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Diagram Forms</TextBlock>
+                        <TextBlock Margin="0 3 0 0" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold">Diagram Forms</TextBlock>
                         <StackPanel Orientation="Vertical">
                             <!-- Process -->
-                            <Border
-                                
-                                BorderThickness="1"
-                                BorderBrush="Gray"
-                                CornerRadius="10"
-                                Margin="4">
+                            <Border>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold">Process</TextBlock>
                                     <StackPanel Orientation="Vertical">
                                         <StackPanel Orientation="Horizontal">
                                             <!--- -->
-                                            <Button Width="50" Height="60" Margin="5 0 5 5" ToolTip="Work Product"
+                                            <Button Margin="5 0 5 5" ToolTip="Work Product"
                                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         cal:Message.Attach=
                                         "[Event Click] = [Action SelectTool('artefact')]">
                                                 <StackPanel>
-                                                    <Image Source="/Resources/Artefact.PNG"  />
+                                                    <Image Source="/Resources/Artefact.PNG" Width="30" Height="30" />
                                                 </StackPanel>
                                             </Button>
-                                            <Button Width="100" Height="60" ToolTip="Phase"
+                                            <Button ToolTip="Phase"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=phase, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=phase, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
                         "[Event Click] = [Action SelectTool('phase')]">
                                                 <StackPanel>
-                                                    <Image Source="/Resources/Phase.png"  />
+                                                    <Image Source="/Resources/Phase.png" Width="65" Height="50" />
                                                 </StackPanel>
                                             </Button>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Width="50" Height="60" Margin="5" ToolTip="Role"
+                                            <Button Margin="5" ToolTip="Role"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
                         "[Event Click] = [Action SelectTool('role')]">
                                                 <StackPanel>
-                                                    <Image Source="/Resources/Role.png" Height="50" Width="50"  />
+                                                    <Image Source="/Resources/Role.png" Height="30" Width="30"  />
                                                 </StackPanel>
                                             </Button>
-                                            <Button Width="100" Height="60" ToolTip="Annotation"
+                                            <Button ToolTip="Annotation"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
                         "[Event Click] = [Action SelectTool('commentaire')]">
                                                 <StackPanel>
-                                                    <Image Source="/Resources/Annotation.png"  />
+                                                    <Image Source="/Resources/Annotation.png" Width="65" Height="50"/>
                                                 </StackPanel>
                                             </Button>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Button Width="50" Height="40" Margin="5" ToolTip="Activity"
+                                            <Button Margin="5" ToolTip="Activity"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
@@ -232,22 +222,22 @@
                                         </StackPanel>
                                         <!-- connexions -->
                                         <StackPanel Orientation="Vertical">
-                                            <ComboBox Width="100" Height="25" Margin="5 5 5 1" ToolTip="Process Connexions">
-                                                <ComboBoxItem IsSelected="True" Width="100" Height="25" ToolTip="Directionnal Arrow"
+                                            <ComboBox Width="80" Height="25" Margin="5 5 5 1" ToolTip="Process Connexions">
+                                                <ComboBoxItem IsSelected="True" Width="50" Height="25" ToolTip="Directionnal Arrow"
                                                           cal:Message.Attach="[Event Selected] = [Action SelectShapeConnexion('directionnalArrow')]" >
                                                     <Image Source="/Resources/DirectionnalArrow.png"  />
                                                 </ComboBoxItem>
-                                                <ComboBoxItem Width="100" Height="25" ToolTip="Line"
+                                                <ComboBoxItem Width="50" Height="25" ToolTip="Line"
                                                 cal:Message.Attach="[Event Selected] = [Action SelectShapeConnexion('lineConnexion')]">
                                                     <Image Source="/Resources/Line.png"/>
                                                 </ComboBoxItem>
-                                                <ComboBoxItem Width="100" Height="25" ToolTip="Bidirectionnal Arrow"
+                                                <ComboBoxItem Width="50" Height="25" ToolTip="Bidirectionnal Arrow"
                                                 cal:Message.Attach="[Event Selected] = [Action SelectShapeConnexion('bidirectionnalArrow')]" >
                                                     <Image Source="/Resources/BidirectionnalArrow.png"  />
                                                 </ComboBoxItem>
                                             </ComboBox>
                                             <StackPanel Orientation="Horizontal" Margin="6 1 5 1" HorizontalAlignment="Center">
-                                                <Button Width="24" Height="24"  ToolTip="Linear Connexion"
+                                                <Button Width="20" Height="24"  ToolTip="Linear Connexion"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"
                             cal:Message.Attach="[Event Click] = [Action ApplyStyleConnexion('1, 0')]"
@@ -259,7 +249,7 @@
                                                                />
                                                     </StackPanel>
                                                 </Button>
-                                                <Button Width="24" Height="24" Margin="0" ToolTip="Squared Connexion"
+                                                <Button Width="20" Height="24" Margin="0" ToolTip="Squared Connexion"
                                 HorizontalContentAlignment="Center"
                                 Background="Transparent"
                                 cal:Message.Attach="[Event Click] = [Action ApplyStyleConnexion('1, 1')]"
@@ -270,7 +260,7 @@
                                                            />
                                                 </Button>
                                                 <Button  ToolTip="Dashed Connexion"
-                            Width="24" Height="24" Margin="0"
+                            Width="20" Height="24" Margin="0"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"   
                             cal:Message.Attach="[Event Click] = [Action ApplyStyleConnexion('5, 1')]"
@@ -278,7 +268,7 @@
                                                     <Path Stroke="Black" 
                                                       StrokeThickness="4"  Data="M 0,0 L 19,0" StrokeDashArray="2, 1"/>
                                                 </Button>
-                                                <Button x:Name="ColorConnexion" Width="24" Height="24" Margin="5 0 0 0" ToolTip="Color Connexion"
+                                                <Button x:Name="ColorConnexion" Width="24" Height="24" Margin="2 0 0 0" ToolTip="Color Connexion"
                             HorizontalContentAlignment="Left"
                             Background="Transparent"                                
                             >
@@ -294,19 +284,19 @@
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                                     <Button x:Name="UpThickness" Width="24" Height="10" ToolTip="Up">
                                                         <StackPanel>
-                                                            <materialDesign:PackIcon Kind="ChevronUp" Height="9" Width="20"/>
+                                                            <materialDesign:PackIcon Kind="ChevronUp" Height="9" Width="15"/>
                                                         </StackPanel>
                                                     </Button>
                                                     <Button x:Name="DownThickness" Width="24" Height="10">
                                                         <StackPanel>
-                                                            <materialDesign:PackIcon Kind="ChevronDown" Height="9" Width="20" ToolTip="Down"/>
+                                                            <materialDesign:PackIcon Kind="ChevronDown" Height="9" Width="15" ToolTip="Down"/>
                                                         </StackPanel>
                                                     </Button>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Vertical"  VerticalAlignment="Center">
                                                     <Button x:Name="ApplyThickness" Width="24" Height="20" ToolTip="Apply Connexion Size">
                                                         <StackPanel>
-                                                            <materialDesign:PackIcon Kind="Check" Height="20" Width="24"/>
+                                                            <materialDesign:PackIcon Kind="Check" Height="20" Width="15"/>
                                                         </StackPanel>
                                                     </Button>
                                                 </StackPanel>
@@ -318,50 +308,40 @@
                                 </StackPanel>
                             </Border>
                             <!-- Class -->
-                            <Border
-                                BorderThickness="1"
-                                BorderBrush="Gray"
-                                CornerRadius="10"
-                                Margin="5 5 10 5">
+                            <Border>
                                 <StackPanel>
                                     <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold"> UML Class</TextBlock>
                                     <StackPanel Orientation="Vertical" Margin="5">
-                                        <Button Width="100" Height="60" ToolTip="Class"
+                                        <Button ToolTip="Class"
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=classe, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=classe, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
                         "[Event Click] = [Action SelectTool('classe')]">
                                             <StackPanel>
-                                                <Image Source="/Resources/Class.png"  />
+                                                <Image Source="/Resources/Class.png" Width="65" Height="40" />
                                             </StackPanel>
                                         </Button>
-                                        <!--
-                                        <StackPanel Orientation="Vertical">
-                                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"  Width="1"/>
-                                        </StackPanel>
-                                        -->
-                                        <!-- connexions -->
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="3">
-                                            <ComboBox Width="100" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Class Connexions">
+                                            <ComboBox Width="70" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Class Connexions">
                                                 <ComboBoxItem
                                                           cal:Message.Attach="[Event Selected] = [Action SelectClassInteraction('bidirectionnalLink')]"  ToolTip="Bidirectionnal Link">
-                                                    <Image Source="/Resources/Line.png"  />
+                                                    <Image Source="/Resources/Line.png"  Width="50" Height="25" />
                                                 </ComboBoxItem>
                                                 <ComboBoxItem IsSelected="True"
                                                           cal:Message.Attach="[Event Selected] = [Action SelectClassInteraction('unidirectionnalLink')]" ToolTip="Unidirectionnal Link">
-                                                    <Image Source="/Resources/DirectionnalLink.png"  />
+                                                    <Image Source="/Resources/DirectionnalLink.png" Width="40" Height="25"  />
                                                 </ComboBoxItem>
                                                 <ComboBoxItem
                                                           cal:Message.Attach="[Event Selected] = [Action SelectClassInteraction('inheritanceLink')]" ToolTip="Inheritance Link">
-                                                    <Image Source="/Resources/InheritanceLink.png"  />
+                                                    <Image Source="/Resources/InheritanceLink.png"  Width="50" Height="25"/>
                                                 </ComboBoxItem>
                                                 <ComboBoxItem 
                                                           cal:Message.Attach="[Event Selected] = [Action SelectClassInteraction('compositionLink')]" ToolTip="Composition Link">
-                                                    <Image Source="/Resources/Composition.png"  />
+                                                    <Image Source="/Resources/Composition.png"  Width="50" Height="25"/>
                                                 </ComboBoxItem>
                                                 <ComboBoxItem 
                                                            cal:Message.Attach="[Event Selected] = [Action SelectClassInteraction('aggregationLink')]" ToolTip="Aggregation Link">
-                                                    <Image Source="/Resources/Aggregation.png"  />
+                                                    <Image Source="/Resources/Aggregation.png"  Width="50" Height="25"/>
                                                 </ComboBoxItem>
                                             </ComboBox>
                                         </StackPanel>
@@ -369,70 +349,71 @@
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
 
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button x:Name="ColorBorderShape" Margin="0 0 0 0" ToolTip="Border Color"
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Button x:Name="ColorBorderShape" Margin="0 0 0 0" ToolTip="Border Color"
                                         HorizontalContentAlignment="Left"
                                         Background="Transparent"                                
                                         >
-                                        <StackPanel>
-                                            <Path 
+                                                    <StackPanel>
+                                                        <Path 
                                                 StrokeThickness="1"
                                                 Stroke="{Binding Path=SelectedColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 Width="24" Height="24" Data="M3.88,3C3.38,3.06 3,3.5 3,4V4L3,5H4L5,5V4L5,3H4L3.88,3M7,3V5H9V3H7M11,3V5H13V3H11M15,3V5H17V3H15M19,3V4L19,5H20L21,5V4L21,3.88C20.94,3.38 20.5,3 20,3H19M3,7V9H5V7H3M19,7V9H21V7H19M3,11V13H5V11H3M19.31,12C19.18,12 19.05,12.05 18.95,12.14L17.39,13.71L16.43,12.75L15.72,13.46L16.43,14.17L11.97,18.63V21H14.35L18.8,16.54L19.5,17.25L20.22,16.54L19.26,15.58L20.82,14.03C21,13.83 21,13.5 20.82,13.31L19.65,12.14C19.56,12.05 19.44,12 19.31,12M3,15V17H5V15H3M17,15L17.97,15.97L13.93,20L12.97,19.04L17,15M3,19V20L3,20.12C3.06,20.62 3.5,21 4,21V21H5V20L5,19H4L3,19M7,19V21H9V19H7Z" Fill="Black" />
-                                        </StackPanel>
-                                    </Button>
-                                    <Button x:Name="Fill" ToolTip="Fill Color"
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button x:Name="Fill" ToolTip="Fill Color"
                                         HorizontalContentAlignment="Left"
                                         Background="Transparent">
-                                        <StackPanel>
-                                            <materialDesign:PackIcon 
+                                                    <StackPanel>
+                                                        <materialDesign:PackIcon 
                                                 Foreground="{Binding Path=SelectedColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 Margin="0 5 0 0" Kind="FormatColorFill" Width="24" Height="24"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </StackPanel>
                                         </StackPanel>
-                                    </Button>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Margin="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button x:Name="Line" Width="24" Height="24" ToolTip="Lined Border"
+                                        <StackPanel Margin="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button x:Name="Line" Width="24" Height="24" ToolTip="Lined Border"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"
                             cal:Message.Attach="[Event Click] = [Action ApplyStyleShape('1, 0')]"
                             >
-                                    <StackPanel>
-                                        <Rectangle Width="10" Height="5" 
+                                                <StackPanel>
+                                                    <Rectangle Width="10" Height="5" 
                                                    Fill="Black"
                                                                Stroke="Black"
                                                    StrokeThickness="2" HorizontalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                                <Button Name="Square" Width="24" Height="24" Margin="0" ToolTip="Squared Border"
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="Square" Width="24" Height="24" Margin="0" ToolTip="Squared Border"
                                 HorizontalContentAlignment="Center"
                                 Background="Transparent"
                                 cal:Message.Attach="[Event Click] = [Action ApplyStyleShape('1, 1')]"
                                 >
-                                    <Rectangle Width="10" Height="10" 
+                                                <Rectangle Width="10" Height="10" 
                                                Fill="Black"
                                                                Stroke="Black"
                                                StrokeThickness="2" HorizontalAlignment="Center"/>
-                                </Button>
-                                <Button 
+                                            </Button>
+                                            <Button 
                             Name="Dashed" ToolTip="Dashed Border"
                             Width="24" Height="24" Margin="0"
                             HorizontalContentAlignment="Center"
                             Background="Transparent"   
                             cal:Message.Attach="[Event Click] = [Action ApplyStyleShape('5, 1')]"
                             >
-                                    <Path Stroke="Black"
+                                                <Path Stroke="Black"
                                           StrokeThickness="4"  Data="M 0,0 L 19,0" StrokeDashArray="2, 1"/>
-                                </Button>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"  Width="1"/>
-                            </StackPanel>
-                            <xctk:ColorPicker 
+                                            </Button>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                    <xctk:ColorPicker 
                                   ToolTip="Color"
                                   x:Name="colorSelector"                             
                                   VerticalContentAlignment="Stretch"
@@ -440,7 +421,7 @@
                                   ShowDropDownButton="False"
                                   ShowRecentColors="True"
                                   BorderBrush="#80000000"
-                                  Margin="5" Width="50" Height="50"
+                                  Margin="5" Width="40" Height="40"
                                   SelectedColor="{Binding Path=SelectedColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                   AvailableColorsHeader="Palette"
                                   StandardColorsHeader="Base color"
@@ -448,12 +429,16 @@
                                   RecentColorsHeader="Recently used"
                                   UsingAlphaChannel="True"
                                   AdvancedButtonHeader="Custom" />
+                                </StackPanel>
+                                
+                            </StackPanel>
+
 
                         </StackPanel>
                     </StackPanel>
                 </Border>
             </StackPanel>
-        </Border>
+        </ScrollViewer>
 
         <!-- La barre canvas -->
         <Border Margin="10 2 10 0" DockPanel.Dock="Top" Height="25" BorderThickness="0.75,0.75,0.75,0.75" BorderBrush="#77000000" Width="{Binding Path=CanvasWidth, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left">
