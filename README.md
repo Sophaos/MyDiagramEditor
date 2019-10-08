@@ -1,6 +1,6 @@
 # MyDiagramEditor
 
-A desktop application in C# and WPF to create diagrams.
+A desktop application built in WPF with C# and XAML to create diagrams following the MVVM pattern with the framework Caliburn.Micro
 
 # What I Learned
 
@@ -9,3 +9,5 @@ A desktop application in C# and WPF to create diagrams.
 * Exporting a view as an image file
 * Created differents custom shapes using Paths
 
+
+![Alt text](/MyDiagramEditor/overviewScreenShot.png?raw=true "Application overview")
