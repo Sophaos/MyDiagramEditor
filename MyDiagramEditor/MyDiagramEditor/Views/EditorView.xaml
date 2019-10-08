@@ -31,9 +31,8 @@
             </MenuItem>
         </Menu>
         <!-- La barre a outil -->
-        <ScrollViewer DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Top"
-            
-            VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer DockPanel.Dock="Left"
+            VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <StackPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.01">
@@ -60,7 +59,7 @@
                                 </Button>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button x:Name="lasso" Width="30" Height="30" ToolTip="Lasso"
+                                <Button x:Name="lasso" Width="40" Height="40" ToolTip="Lasso"
                             BorderBrush="{Binding SelectedTool, ConverterParameter=lasso, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                             Background="{Binding SelectedTool, ConverterParameter=lasso, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
                             cal:Message.Attach="[Event Click] = [Action SelectTool('lasso')]">
@@ -68,7 +67,7 @@
                                         <Image Source="/Resources/lasso.png"  />
                                     </StackPanel>
                                 </Button>
-                                <Button Width="30" Height="30" ToolTip="Move"
+                                <Button Width="40" Height="40" ToolTip="Move"
                         BorderBrush="{Binding SelectedTool, ConverterParameter=deplacement, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding SelectedTool, ConverterParameter=deplacement, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach="[Event Click] = [Action SelectTool('deplacement')]">
@@ -77,8 +76,9 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
+                            
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Width="30" Height="30" ToolTip="Floating Text"
+                                <Button Width="40" Height="40" ToolTip="Floating Text"
                         BorderBrush="{Binding SelectedTool, ConverterParameter=texte, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding SelectedTool, ConverterParameter=texte, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach="[Event Click] = [Action SelectTool('texte')]">
@@ -86,7 +86,7 @@
                                         <materialDesign:PackIcon Kind="FormatText" Height="25" Width="25"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Width="30" Height="30" ToolTip="Resize"
+                                <Button Width="40" Height="40" ToolTip="Resize"
                             HorizontalContentAlignment="Left"                            
                             BorderBrush="{Binding SelectedTool, ConverterParameter=resize, Converter={StaticResource ConvertisseurBordure}, UpdateSourceTrigger=PropertyChanged}" 
                             Background="{Binding SelectedTool, ConverterParameter=resize, Converter={StaticResource ConvertisseurCouleurFond}, UpdateSourceTrigger=PropertyChanged}"                              
@@ -156,8 +156,9 @@
 
                     </StackPanel>
                 </Border>
-                <Border
-                        >
+                <Separator/>
+                <Border>
+                    
                     <StackPanel Orientation="Vertical">
                         <TextBlock Margin="0 3 0 0" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold">Diagram Forms</TextBlock>
                         <StackPanel Orientation="Vertical">
@@ -222,16 +223,16 @@
                                         </StackPanel>
                                         <!-- connexions -->
                                         <StackPanel Orientation="Vertical">
-                                            <ComboBox Width="80" Height="25" Margin="5 5 5 1" ToolTip="Process Connexions">
-                                                <ComboBoxItem IsSelected="True" Width="50" Height="25" ToolTip="Directionnal Arrow"
+                                            <ComboBox Width="100" Height="25" Margin="5 5 5 1" ToolTip="Process Connexions">
+                                                <ComboBoxItem IsSelected="True" Width="70" Height="25" ToolTip="Directionnal Arrow"
                                                           cal:Message.Attach="[Event Selected] = [Action SelectShapeConnexion('directionnalArrow')]" >
                                                     <Image Source="/Resources/DirectionnalArrow.png"  />
                                                 </ComboBoxItem>
-                                                <ComboBoxItem Width="50" Height="25" ToolTip="Line"
+                                                <ComboBoxItem Width="70" Height="25" ToolTip="Line"
                                                 cal:Message.Attach="[Event Selected] = [Action SelectShapeConnexion('lineConnexion')]">
                                                     <Image Source="/Resources/Line.png"/>
                                                 </ComboBoxItem>
-                                                <ComboBoxItem Width="50" Height="25" ToolTip="Bidirectionnal Arrow"
+                                                <ComboBoxItem Width="70" Height="25" ToolTip="Bidirectionnal Arrow"
                                                 cal:Message.Attach="[Event Selected] = [Action SelectShapeConnexion('bidirectionnalArrow')]" >
                                                     <Image Source="/Resources/BidirectionnalArrow.png"  />
                                                 </ComboBoxItem>
@@ -308,6 +309,7 @@
                                 </StackPanel>
                             </Border>
                             <!-- Class -->
+                            <Separator/>
                             <Border>
                                 <StackPanel>
                                     <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold"> UML Class</TextBlock>
@@ -322,7 +324,7 @@
                                             </StackPanel>
                                         </Button>
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="3">
-                                            <ComboBox Width="70" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Class Connexions">
+                                            <ComboBox Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Class Connexions">
                                                 <ComboBoxItem
                                                           cal:Message.Attach="[Event Selected] = [Action SelectClassInteraction('bidirectionnalLink')]"  ToolTip="Bidirectionnal Link">
                                                     <Image Source="/Resources/Line.png"  Width="50" Height="25" />
@@ -349,8 +351,11 @@
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
+                            <Separator/>
+                            
                             <StackPanel>
-                                <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Center" FontSize="12" FontWeight="Bold"> Shape style</TextBlock>
+                                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                                     <StackPanel>
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
 

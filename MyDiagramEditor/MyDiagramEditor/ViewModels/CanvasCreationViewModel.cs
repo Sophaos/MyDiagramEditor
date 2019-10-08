@@ -14,8 +14,8 @@ namespace MyDiagramEditor.ViewModels
     {
         private IEventAggregator _eventAggregator;
         private string _canvasName = "Westeros";
-        private double _canvasHeight = 1000;
-        private double _canvasWidth = 1000;
+        private double _canvasHeight = 500;
+        private double _canvasWidth = 700;
 
 
         public CanvasCreationViewModel() { }

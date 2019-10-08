@@ -6,7 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
-        Title="MyDiagramEditor" Height="680" Width="1300" WindowStartupLocation="CenterScreen">
+        WindowState="Maximized"
+        Title="MyDiagramEditor" Height="700" Width="1000" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!-- Animation du menu lors d'ouverture -->
         <Storyboard x:Key="OpenMenu">
