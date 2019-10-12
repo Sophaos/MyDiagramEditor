@@ -173,7 +173,8 @@
                                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=artefact, UpdateSourceTrigger=PropertyChanged}" 
                                         cal:Message.Attach=
-                                        "[Event Click] = [Action SelectTool('artefact')]">
+                                        "[Event Click] = [Action SelectTool('artefact')];
+                                         [Event PreviewMouseDoubleClick] = [Action AddOnDoubleClick('artefact')]">
                                                 <StackPanel>
                                                     <Image Source="/Resources/Artefact.PNG" Width="30" Height="30" />
                                                 </StackPanel>
@@ -182,7 +183,8 @@
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=phase, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=phase, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('phase')]">
+                        "[Event Click] = [Action SelectTool('phase')];
+                                         [Event PreviewMouseDoubleClick] = [Action AddOnDoubleClick('phase')]">
                                                 <StackPanel>
                                                     <Image Source="/Resources/Phase.png" Width="65" Height="50" />
                                                 </StackPanel>
@@ -194,7 +196,8 @@
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=role, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('role')]">
+                        "[Event Click] = [Action SelectTool('role')];
+                                         [Event PreviewMouseDoubleClick] = [Action AddOnDoubleClick('role')]">
                                                 <StackPanel>
                                                     <Image Source="/Resources/Role.png" Height="30" Width="30"  />
                                                 </StackPanel>
@@ -203,7 +206,8 @@
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=commentaire, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('commentaire')]">
+                        "[Event Click] = [Action SelectTool('commentaire')];
+                                         [Event PreviewMouseDoubleClick] = [Action AddOnDoubleClick('commentaire')]">
                                                 <StackPanel>
                                                     <Image Source="/Resources/Annotation.png" Width="65" Height="50"/>
                                                 </StackPanel>
@@ -215,7 +219,8 @@
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=activite, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('activite')]">
+                        "[Event Click] = [Action SelectTool('activite')];
+                                         [Event PreviewMouseDoubleClick] = [Action AddOnDoubleClick('activite')]">
                                                 <StackPanel>
                                                     <Image Source="/Resources/Activity.PNG"  />
                                                 </StackPanel>
@@ -318,7 +323,8 @@
                         BorderBrush="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurBordure}, ConverterParameter=classe, UpdateSourceTrigger=PropertyChanged}" 
                         Background="{Binding Path=SelectedTool, Converter={StaticResource ConvertisseurCouleurFond}, ConverterParameter=classe, UpdateSourceTrigger=PropertyChanged}" 
                         cal:Message.Attach=
-                        "[Event Click] = [Action SelectTool('classe')]">
+                        "[Event Click] = [Action SelectTool('classe')];
+                                         [Event PreviewMouseDoubleClick] = [Action AddOnDoubleClick('classe')]">
                                             <StackPanel>
                                                 <Image Source="/Resources/Class.png" Width="65" Height="40" />
                                             </StackPanel>
@@ -809,6 +815,5 @@
 
             </Canvas>
         </ScrollViewer>
-        <!-- temporaire pour Count -->
     </DockPanel>
 </UserControl>

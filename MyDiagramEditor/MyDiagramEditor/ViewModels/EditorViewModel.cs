@@ -219,7 +219,7 @@ namespace MyDiagramEditor.ViewModels
 
             if (SelectedItems.Count != 0)
             {
-                _copiedItems.Clear(); // test
+                _copiedItems.Clear();
                 foreach (ItemModel s in _selectedItems)
                 {
                     if (!s.IsConnexion)
@@ -968,7 +968,7 @@ namespace MyDiagramEditor.ViewModels
         {
             ItemModel item = new ItemModel()
             {
-                Id = ++itemCounter,             // temporaire
+                Id = ++itemCounter,
                 Top = MousePosition.Y,
                 Left = MousePosition.X,
                 Type = type,
@@ -982,9 +982,27 @@ namespace MyDiagramEditor.ViewModels
             Select(item);
         }
 
+        // Create an item (shapes and class)
+        public void AddOnDoubleClick(string type)
+        {
+            ItemModel item = new ItemModel()
+            {
+                Id = ++itemCounter,
+                Top = 10,
+                Left = 10,
+                Type = type,
+            };
+
+            item.User = User;
+            item.Creator = User;
+            _createdItems.Add(item);
+
+            Items.Add(item);
+            Select(item);
+        }
 
         // insert an image in the canvas (works offline) (Byte[] must match with thin client)
-        
+
         public void InsertImage()
         {
             ClearSelection();
