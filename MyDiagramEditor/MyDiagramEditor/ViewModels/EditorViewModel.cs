@@ -1228,19 +1228,25 @@ namespace MyDiagramEditor.ViewModels
 
                                 if (_clParent.StartItem.Type == "role")
                                 {
-                                    if (i.Type == "activite") { i.MovingStrokeColor = OnSelectionColor; }
+                                    if (i.Type == "activite") {
+                                        i.MovingStrokeColor = OnSelectionColor;
+                                    }
+                                    else { i.MovingStrokeColor = "Red";}
                                 }
                                 else if (_clParent.StartItem.Type == "artefact")
                                 {
                                     if (i.Type == "activite") { i.MovingStrokeColor = OnSelectionColor; }
+                                    else { i.MovingStrokeColor = "Red";}
                                 }
                                 else if (_clParent.StartItem.Type == "activite")
                                 {
                                     if (i.Type == "artefact") { i.MovingStrokeColor = OnSelectionColor; }
+                                    else { i.MovingStrokeColor = "Red";}
                                 }
                                 else if (_clParent.StartItem.Type == "classe")
                                 {
                                     if (i.Type == "classe") { i.MovingStrokeColor = OnSelectionColor; }
+                                    else { i.MovingStrokeColor = "Red";}
                                 }
                                 else
                                 {
@@ -1314,12 +1320,14 @@ namespace MyDiagramEditor.ViewModels
             if (_clParent.IsConnecting)
             {
                 if (_clParent.StartItem == item) return;
-                // CORRECTION: RESTRICTION SUPPLEMENTAIRE ICI !!!!!!!!!!!!!!! -stpham
                 // cannot match again to the same initial to final item
                 foreach (ItemModel c in _items)
                 {
                     if (c.IsConnexion && c != _clParent)
-                        if (_clParent.StartItem == c.InitialItem && c.FinalItem == item) return;
+                        if (_clParent.StartItem == c.InitialItem && c.FinalItem == item)
+                        {
+                            return;
+                        }
                 }
                 // cannot match to a text or an image
                 if (item.Type == "texte" || item.Type == "image") { return; }
