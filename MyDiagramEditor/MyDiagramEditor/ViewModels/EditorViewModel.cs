@@ -1221,39 +1221,6 @@ namespace MyDiagramEditor.ViewModels
                             _clParent.Type = SelectedClassInteraction;
                             _clParent.Geometry = _connexionGenerator.Create(SelectedClassInteraction, _clParent.StartPoint, MousePosition);
                         }
-                        foreach (ItemModel i in _items) // peut etre ajout de restriction pour mieux identifier
-                        {
-                            if (!i.IsConnexion)
-                            {
-
-                                if (_clParent.StartItem.Type == "role")
-                                {
-                                    if (i.Type == "activite") {
-                                        i.MovingStrokeColor = OnSelectionColor;
-                                    }
-                                    else { i.MovingStrokeColor = "Red";}
-                                }
-                                else if (_clParent.StartItem.Type == "artefact")
-                                {
-                                    if (i.Type == "activite") { i.MovingStrokeColor = OnSelectionColor; }
-                                    else { i.MovingStrokeColor = "Red";}
-                                }
-                                else if (_clParent.StartItem.Type == "activite")
-                                {
-                                    if (i.Type == "artefact") { i.MovingStrokeColor = OnSelectionColor; }
-                                    else { i.MovingStrokeColor = "Red";}
-                                }
-                                else if (_clParent.StartItem.Type == "classe")
-                                {
-                                    if (i.Type == "classe") { i.MovingStrokeColor = OnSelectionColor; }
-                                    else { i.MovingStrokeColor = "Red";}
-                                }
-                                else
-                                {
-                                    i.MovingStrokeColor = OnSelectionColor;
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -1319,6 +1286,40 @@ namespace MyDiagramEditor.ViewModels
         {
             if (_clParent.IsConnecting)
             {
+                foreach (ItemModel i in _items) // peut etre ajout de restriction pour mieux identifier
+                {
+                    if (!i.IsConnexion)
+                    {
+
+                        if (_clParent.StartItem.Type == "role")
+                        {
+                            if (i.Type == "activite")
+                            {
+                                i.MovingStrokeColor = OnSelectionColor;
+                            }
+                            else { i.MovingStrokeColor = "Red"; }
+                        }
+                        else if (_clParent.StartItem.Type == "artefact")
+                        {
+                            if (i.Type == "activite") { i.MovingStrokeColor = OnSelectionColor; }
+                            else { i.MovingStrokeColor = "Red"; }
+                        }
+                        else if (_clParent.StartItem.Type == "activite")
+                        {
+                            if (i.Type == "artefact") { i.MovingStrokeColor = OnSelectionColor; }
+                            else { i.MovingStrokeColor = "Red"; }
+                        }
+                        else if (_clParent.StartItem.Type == "classe")
+                        {
+                            if (i.Type == "classe") { i.MovingStrokeColor = OnSelectionColor; }
+                            else { i.MovingStrokeColor = "Red"; }
+                        }
+                        else
+                        {
+                            i.MovingStrokeColor = OnSelectionColor;
+                        }
+                    }
+                }
                 if (_clParent.StartItem == item) return;
                 // cannot match again to the same initial to final item
                 foreach (ItemModel c in _items)
@@ -1326,6 +1327,7 @@ namespace MyDiagramEditor.ViewModels
                     if (c.IsConnexion && c != _clParent)
                         if (_clParent.StartItem == c.InitialItem && c.FinalItem == item)
                         {
+                            c.FinalItem.MovingStrokeColor = "Red";
                             return;
                         }
                 }
