@@ -19,6 +19,7 @@ namespace MyDiagramEditor.ViewModels
             _windowManager = windowManager;
             _eventAggregator = eventAggregator;
             _eventAggregator.Subscribe(this);
+            LoadEditor();
         }
 
         public void LoadEditor()
@@ -37,11 +38,6 @@ namespace MyDiagramEditor.ViewModels
                 Editor.LoadTutorial();
                 Editor.IsTutorialOn = true;
             }
-            if (!_editor.IsDoneAddingCanvas)
-            {
-                _editor.LoadCanvasCreation();
-            }
-
         }
 
 

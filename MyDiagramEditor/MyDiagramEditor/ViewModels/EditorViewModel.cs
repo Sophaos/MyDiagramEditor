@@ -47,7 +47,7 @@ namespace MyDiagramEditor.ViewModels
         private ItemModel _clEnd = null;
         string StartOrientation = "";
         string EndOrientation = "";
-        private int _id = 0;     // temporaire, sera remplacer par lui du serveur
+        private int _id = 0; 
         #endregion
         #region server-related-stuff
         List<Pair<string, string>> UserColors = new List<Pair<string, string>>();
@@ -69,6 +69,18 @@ namespace MyDiagramEditor.ViewModels
             _eventAggregator = eventAggregator;
             _eventAggregator.Subscribe(this);
 
+            _canvas = new CanvasModel();
+            _canvas.Height = 500;
+            _canvas.Width = 700;
+            _canvas.Name = "Westeros";
+            _canvas.Creator = User;
+
+            NotifyOfPropertyChange(() => CanvasName);
+            NotifyOfPropertyChange(() => CanvasWidth);
+            NotifyOfPropertyChange(() => CanvasHeight);
+            MidCanvasX = Convert.ToInt32(CanvasWidth / 2);
+            MidCanvasY = Convert.ToInt32(CanvasHeight / 2);
+            IsDoneAddingCanvas = true;
         }
 
         public ItemModel GetItemFromItemsWithIdAndType(int id, string type)
@@ -1673,10 +1685,9 @@ namespace MyDiagramEditor.ViewModels
         {
             dynamic settings = new ExpandoObject();
             settings.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
             settings.MinWidth = 500;
             settings.Width = 400;
-            settings.Title = "Create";
+            settings.Title = "New canvas";
             settings.ResizeMode = ResizeMode.NoResize;
             _windowManager.ShowDialog(new CanvasCreationViewModel(_eventAggregator), null, settings);
 

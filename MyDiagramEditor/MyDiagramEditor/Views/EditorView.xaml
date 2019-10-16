@@ -20,7 +20,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Create"
+                <MenuItem Header="_New"
                           cal:Message.Attach="[Event Click] = [Action LoadCanvasCreation()]"/>
                 <MenuItem Header="_Load"
                           cal:Message.Attach="[Event Click] = [Action Load()]"/>

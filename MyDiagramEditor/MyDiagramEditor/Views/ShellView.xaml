@@ -71,7 +71,7 @@
                 <!-- Liste des elements qui change la vue principale -->
                 <ListView BorderBrush="{x:Null}" x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF31577E">
 
-                    <ListViewItem Height="60" cal:Message.Attach="[Event MouseUp] = [Action LoadEditor()]">
+                    <ListViewItem Height="60" cal:Message.Attach="[Event MouseUp] = [Action LoadEditor()]" IsSelected="True">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" Height="25" Width="25" Margin="15"/>
                             <TextBlock Text="Editor" VerticalAlignment="Center" Margin="20 10"/>
