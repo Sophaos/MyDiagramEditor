@@ -33,6 +33,9 @@ namespace MyDiagramEditor.ViewModels
         private string _textBlockPosition = "";
         private Point _mousePosition;
 
+        private bool _isMouseDown = false;
+        private IEventAggregator _eventAggregator;
+
         // canvas related informations
 
         private CanvasModel _canvas = new CanvasModel();
@@ -49,8 +52,7 @@ namespace MyDiagramEditor.ViewModels
         string EndOrientation = "";
         private int _id = 0; 
         #endregion
-        #region server-related-stuff
-        List<Pair<string, string>> UserColors = new List<Pair<string, string>>();
+
         int itemCounter = 0;
         private string _user;
 
@@ -63,7 +65,6 @@ namespace MyDiagramEditor.ViewModels
 
         public EditorViewModel(IEventAggregator eventAggregator, IWindowManager windowManager)
         {
-
 
             _windowManager = windowManager;
             _eventAggregator = eventAggregator;
@@ -82,96 +83,6 @@ namespace MyDiagramEditor.ViewModels
             MidCanvasY = Convert.ToInt32(CanvasHeight / 2);
             IsDoneAddingCanvas = true;
         }
-
-        public ItemModel GetItemFromItemsWithIdAndType(int id, string type)
-        {
-            foreach (ItemModel s in Items)
-            {
-                if (s.Id == id && s.Type == type)
-                {
-                    return s;
-                }
-            }
-            return null;
-        }
-
-        public ItemModel GetItemFromItemsWithId(int id)
-        {
-            foreach (ItemModel s in Items)
-            {
-                if (s.Id == id)
-                {
-                    return s;
-                }
-            }
-            return null;
-        }
-
-        public ItemModel GetItemFromSelectedWithId(int id)
-        {
-            foreach (ItemModel s in SelectedItems)
-            {
-                if (s.Id == id)
-                {
-                    return s;
-                }
-            }
-            return null;
-        }
-
-        public string getSelectColor(string username)
-        {
-            foreach (Pair<string, string> pair in UserColors)
-            {
-                if (pair.First == username)
-                {
-                    return pair.Second;
-                }
-            }
-            return "Transparent";
-        }
-
-        public void Filling(int id, string color)
-        {
-            if (GetItemFromItemsWithId(id) != null)
-                GetItemFromItemsWithId(id).Fill = color;
-        }
-
-        public void SetColorBorder(int id, string color)
-        {
-            if (GetItemFromItemsWithId(id) != null)
-                GetItemFromItemsWithId(id).Stroke = color;
-        }
-
-        public void SetBorderStyle(int id, string style)
-        {
-            if (GetItemFromItemsWithId(id) != null)
-                GetItemFromItemsWithId(id).StrokeDashArray = style;
-        }
-
-        public void SetBorderThickness(int id, string thickness)
-        {
-            if (GetItemFromItemsWithId(id) != null)
-                GetItemFromItemsWithId(id).StrokeThickness = thickness;
-        }
-
-
-        public void Cutting(int id)
-        {
-            if (GetItemFromItemsWithId(id) != null)
-            {
-                ItemModel item = GetItemFromItemsWithId(id);
-                Items.Remove(item);
-
-                if (_createdItems.Contains(item))
-                {
-                    _createdItems.Remove(item);
-                }
-
-            }
-        }
-
-        #endregion
 
         public bool IsForm()
         {
@@ -375,14 +286,12 @@ namespace MyDiagramEditor.ViewModels
                     }
                 }
 
-
             }
             if (SelectedTool == "deplacement")
             {
                 foreach (ItemModel s in _selectedItems)
                 {
                     s.IsTextEnabled = false;
-                    // ajout model
                 }
             }
             else
@@ -390,12 +299,9 @@ namespace MyDiagramEditor.ViewModels
                 foreach (ItemModel s in _selectedItems)
                 {
                     s.IsTextEnabled = true;
-                    //ajout model
                 }
             }
         }
-        private bool _isMouseDown = false;          // a deplacer
-        private IEventAggregator _eventAggregator;  // a deplacer
 
         // Begin the drag/move operation
         public void StartMove(ItemModel item)
@@ -578,12 +484,8 @@ namespace MyDiagramEditor.ViewModels
                             }
                             i.ItemWidth += horizontalChange;
                         }
-
-
                     }
-
                 }
-
             }
             else if (orientation == "bottom-right")
             {
@@ -659,7 +561,6 @@ namespace MyDiagramEditor.ViewModels
                             i.ItemHeight += verticalChange;
                         }
                     }
-
                 }
             }
 
@@ -692,7 +593,6 @@ namespace MyDiagramEditor.ViewModels
                 {
                     cl.Update();
                     cl.SetSideText();
-
                 }
             }
 
@@ -700,7 +600,6 @@ namespace MyDiagramEditor.ViewModels
         // rotate a shape left (shape/class) (incomplete)
         public void RotateLeft()
         {
-
             foreach (ItemModel s in _selectedItems)
             {
                 if (s.IsConnexion) continue;
@@ -751,9 +650,8 @@ namespace MyDiagramEditor.ViewModels
                 item.FillConnector = "Transparent";
                 item.FillLineConnector = "Transparent";
                 item.ResizeVisibility = "Hidden";
-                item.IsTextEnabled = true;  // itemModel
+                item.IsTextEnabled = true; 
                 item.User = "";
-
 
                 if (_selectedItems.Contains(item))
                 {
@@ -766,12 +664,8 @@ namespace MyDiagramEditor.ViewModels
             }
             catch { }
         }
-        // Guard for pushing to the stack
-
-
         // Guard for popping the stack
         public bool CanPop { get { return Stack.Count > 0; } }
-
         // Pop from the stack
         public void Pop()
         {
@@ -905,11 +799,9 @@ namespace MyDiagramEditor.ViewModels
             }
         }
 
-
         // Select a single item or a collection of connexion (left click) (to be fixed overall)
         public void Select(ItemModel item)
         {
-
             if (item.User == "" || item.User == User)
             {
                 if (item == _lasso.RectangleSelection) return;
@@ -1057,7 +949,6 @@ namespace MyDiagramEditor.ViewModels
             {
                 ClearSelection();
                 _lasso.Start(MousePosition, Items);
-                //_isMouseDown = true;
             }
         }
 
@@ -1199,7 +1090,6 @@ namespace MyDiagramEditor.ViewModels
             {
                 _clParent.IsClass = true;
                 _clParent.Type = SelectedClassInteraction;
-                //_clParent.Type = SelectedClassInteraction;
                 _clParent.Geometry = _connexionGenerator.Create(SelectedClassInteraction, _clParent.StartPoint, MousePosition);
 
                 if (_clParent.Type == "compositionLink")
@@ -1272,18 +1162,15 @@ namespace MyDiagramEditor.ViewModels
                     _clParent.Text3Height = 20;
                     _clParent.Text2 = "#";
                     _clParent.Text3 = "#";
-                    //_clParent.IsReadOnly = true;  // test
                 }
-                _clParent.Id = ++itemCounter;                       // temp serialize
-                _clParent.EndItemId = _clParent.EndItem.Id; // temp serialize
-                _clParent.StartItemId = _clParent.StartItem.Id;    // temp serialize
-                _clParent.InitialItemId = _clParent.StartItem.Id;   // temp serialize
-                _clParent.FinalItemId = _clParent.EndItem.Id;       // temp serialize
+                _clParent.Id = ++itemCounter;
+                _clParent.EndItemId = _clParent.EndItem.Id;
+                _clParent.StartItemId = _clParent.StartItem.Id;
+                _clParent.InitialItemId = _clParent.StartItem.Id; 
+                _clParent.FinalItemId = _clParent.EndItem.Id;     
 
                 // fin ajout serveur
                 ClearSelection();
-
-
                 Select(_clParent);
             }
             // on hit failure we remove the previewed item
@@ -1388,9 +1275,9 @@ namespace MyDiagramEditor.ViewModels
             {
                 // will not link if its the same item
                 if (_clParent.EndItem != null && _clParent.EndItem != _clParent.StartItem)
-                    //_clParent.EndItem.= "Transparent";
-
+                {
                     _clParent.IsMatch = false;
+                }
             }
         }
         // return a connexion
@@ -1449,40 +1336,40 @@ namespace MyDiagramEditor.ViewModels
                 Fill = _clParent.Fill,
             };
             // setting the starting item
-            _clStart.Id = ++itemCounter;        // temporaire
-            _clEnd.Id = ++itemCounter;          // temporaire
+            _clStart.Id = ++itemCounter; 
+            _clEnd.Id = ++itemCounter; 
             _clStart.StartItem = _clParent.StartItem;
-            _clStart.StartItemId = _clParent.StartItem.Id;        // temp serialize
+            _clStart.StartItemId = _clParent.StartItem.Id; 
             _clStart.EndItem = _clParent;
-            _clStart.EndItemId = _clParent.Id;            // temp serialize
+            _clStart.EndItemId = _clParent.Id; 
             _clStart.StartPoint = _clParent.StartPoint;
             _clStart.Type = _clParent.Type;
             _clStart.InitialItem = _clParent.InitialItem;
             _clStart.FinalItem = _clParent.FinalItem;
             _clStart.StartOrientation = _clParent.StartOrientation;
             _clStart.EndOrientation = _clParent.EndOrientation;
-            _clStart.InitialItemId = _clParent.InitialItemId;   // temp serialize
-            _clStart.FinalItemId = _clParent.FinalItemId;   // temp serialize
+            _clStart.InitialItemId = _clParent.InitialItemId;   
+            _clStart.FinalItemId = _clParent.FinalItemId;   
 
             // setting the ending item
             _clEnd.StartItem = _clParent;
-            _clEnd.StartItemId = _clParent.Id;      // temp serialize
+            _clEnd.StartItemId = _clParent.Id;      
             _clEnd.EndItem = _clParent.EndItem;
-            _clEnd.EndItemId = _clParent.EndItem.Id;    // temp serialize
+            _clEnd.EndItemId = _clParent.EndItem.Id;    
             _clEnd.EndPoint = _clParent.EndPoint;
             _clEnd.Type = _clParent.Type;
             _clEnd.InitialItem = _clParent.InitialItem;
             _clEnd.FinalItem = _clParent.FinalItem;
             _clEnd.StartOrientation = _clParent.StartOrientation;
             _clEnd.EndOrientation = _clParent.EndOrientation;
-            _clEnd.InitialItemId = _clParent.InitialItemId;   // temp serialize
-            _clEnd.FinalItemId = _clParent.FinalItemId;   // temp serialize
+            _clEnd.InitialItemId = _clParent.InitialItemId;   
+            _clEnd.FinalItemId = _clParent.FinalItemId;   
 
             // once the setting of the new links are done: we need to change the parent link because he is not linked to the same items
             _clParent.StartItem = _clStart;
-            _clParent.StartItemId = _clStart.Id;    // temp serialize
+            _clParent.StartItemId = _clStart.Id;    
             _clParent.EndItem = _clEnd;
-            _clParent.EndItemId = _clEnd.Id; // temp serialize
+            _clParent.EndItemId = _clEnd.Id; 
             _clParent.IsAngling = true;
             _clParent.IsAdding = true;
             _isMouseDown = true;
@@ -1556,7 +1443,7 @@ namespace MyDiagramEditor.ViewModels
                     if (_clStart.StartItem == cl)
                     {
                         cl.EndItem = _clStart;
-                        cl.EndItemId = cl.EndItem.Id;   // temp serialize
+                        cl.EndItemId = cl.EndItem.Id;   
                         break;
                     }
                 }
@@ -1567,7 +1454,7 @@ namespace MyDiagramEditor.ViewModels
                     {
 
                         cl.StartItem = _clEnd;
-                        cl.StartItemId = cl.StartItem.Id;   // temp serialize
+                        cl.StartItemId = cl.StartItem.Id;   
                         break;
                     }
                 }
@@ -1590,7 +1477,6 @@ namespace MyDiagramEditor.ViewModels
                 _clParent.IsDoneAlterning = true;
                 _clParent.IsAlterning = false;
             }
-
         }
         #endregion
         #endregion
