@@ -21,7 +21,7 @@ namespace MyDiagramEditor
         {
             _container.Singleton<IWindowManager, WindowManager>();
             _container.Singleton<IEventAggregator, EventAggregator>();
-            _container.PerRequest<IShell, ShellViewModel>();
+            _container.Singleton<IShell, ShellViewModel>();
             MessageBinder.SpecialValues.Add("$pressedkey", (context) =>
             {
                 // NOTE: IMPORTANT - you MUST add the dictionary key as lowercase as CM
@@ -82,7 +82,6 @@ namespace MyDiagramEditor
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            //DisplayRootViewFor<ShellViewModel>();
             DisplayRootViewFor<IShell>();
         }
     }
