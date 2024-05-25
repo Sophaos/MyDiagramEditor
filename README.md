@@ -19,3 +19,4 @@ This project is the desktop part of an Academic project.
 * WPF
 * C#
 * Caliburn.Micro
+* XAML
